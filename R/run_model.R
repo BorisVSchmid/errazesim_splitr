@@ -5,7 +5,7 @@
 #' 
 #' @param model A splitr modeling object.
 #' @export
-run_model <- function(model) {
+run_model <- function(model, config = NULL) {
   
   if (inherits(model, "trajectory_model")) {
     
@@ -25,6 +25,7 @@ run_model <- function(model) {
                              0, model$vert_motion),
         model_height = ifelse(is.null(model$model_height),
                               20000, model$model_height),
+        config,
         extended_met = TRUE,
         traj_name = model$traj_name,
         exec_dir = model$exec_dir,
@@ -77,6 +78,7 @@ run_model <- function(model) {
           met_type = model$met_type,
           vert_motion = model$vert_motion,
           model_height = model$model_height,
+          config,
           particle_num = 2500,
           particle_max = 10000,
           species = species_list,

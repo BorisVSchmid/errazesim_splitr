@@ -27,6 +27,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                met_type = "reanalysis",
                                vert_motion = 0,
                                model_height = 20000,
+                               config = NULL,
                                particle_num = 2500,
                                particle_max = 10000,
                                species,
@@ -90,6 +91,11 @@ hysplit_dispersion <- function(lat = 49.263,
   # Write default versions of the SETUP.CFG and
   # ASCDATA.CFG files in the working directory
   hysplit_config_init(dir = exec_dir)
+  
+  # Overwrite SETUP.CFG if there is a custom config defined.
+  if (!is.null(config)) {
+    write_config_list(config,dir = exec_dir)
+  }
   
   # Modify numbers of particles in the SETUP.CFG file
   readLines(con = file.path(exec_dir, "SETUP.CFG")) %>%
