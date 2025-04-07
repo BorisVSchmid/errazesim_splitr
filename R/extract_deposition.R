@@ -52,7 +52,7 @@
 #'   scale_color_viridis_c() +
 #'   theme_minimal()
 #' }
-read_hysplit_deposition <- function(con2asc_path, 
+extract_deposition <- function(con2asc_path, 
                                     input_bin_path, 
                                     output_ascii_path) {
 
