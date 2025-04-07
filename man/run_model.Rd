@@ -4,7 +4,7 @@
 \alias{run_model}
 \title{Run the model}
 \usage{
-run_model(model)
+run_model(model, config = NULL)
 }
 \arguments{
 \item{model}{A splitr modeling object.}
