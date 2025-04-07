@@ -38,10 +38,10 @@ the 'con2asc.exe' executable. The conversion step can be slow for large files.
 \examples{
 \dontrun{
 # Example usage:
-deposition_df <- read_hysplit_deposition(
+deposition_df <- extract_deposition(
   con2asc_path = "C:/hysplit/exec/con2asc.exe",
   input_bin_path = "C:/hysplit_runs/run1/output.bin",
-  output_ascii_path = "C:/hysplit_runs/run1/output.bin.txt" 
+  output_ascii_path = "C:/hysplit_runs/run1/output.bin.txt"  # This output is determined by con2asc, and is not an option you control.
 )
 
 # Check the first few rows
