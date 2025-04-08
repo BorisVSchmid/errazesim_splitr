@@ -82,6 +82,7 @@ run_model <- function(model, config = NULL) {
           particle_num = 2500,
           particle_max = 10000,
           species = species_list,
+          top_of_single_layer = 10,
           exec_dir = model$exec_dir,
           met_dir = model$met_dir,
           binary_path = model$binary_path,
