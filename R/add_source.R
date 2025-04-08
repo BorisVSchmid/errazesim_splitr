@@ -13,6 +13,7 @@
 #' @param density The particle density in units of g/cm3.
 #' @param shape_factor The particle shape factor as a value in the range
 #'   `0`-`1`.
+#' @param top_of_single_layer Below what altitude do we call it deposition (in combination with set_config nver=1 in concentration runs)
 #' @param ddep_vel The dry deposition velocity in units of m/s.
 #' @param ddep_mw The molecular weight in units of g/mol.
 #' @param ddep_a_ratio The dry deposition A ratio.
@@ -36,6 +37,7 @@ add_source <- function(model,
                        pdiam = NULL,
                        density = NULL,
                        shape_factor = NULL,
+		       top_of_single_layer = NULL,
                        ddep_vel = NULL,
                        ddep_mw = NULL,
                        ddep_a_ratio = NULL,

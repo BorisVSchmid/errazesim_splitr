@@ -16,6 +16,7 @@ add_source(
   pdiam = NULL,
   density = NULL,
   shape_factor = NULL,
+  top_of_single_layer = NULL,
   ddep_vel = NULL,
   ddep_mw = NULL,
   ddep_a_ratio = NULL,
@@ -47,6 +48,8 @@ source emissions.}
 
 \item{shape_factor}{The particle shape factor as a value in the range
 \code{0}-\code{1}.}
+
+\item{top_of_single_layer}{Below what altitude do we call it deposition (in combination with set_config nver=1 in concentration runs)}
 
 \item{ddep_vel}{The dry deposition velocity in units of m/s.}
 
