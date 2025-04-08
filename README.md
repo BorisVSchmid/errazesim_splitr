@@ -10,7 +10,7 @@ status](https://travis-ci.org/rich-iannone/splitr.svg?branch=master)](https://tr
 [![DOI](https://zenodo.org/badge/20543/rich-iannone/SplitR.svg)](https://zenodo.org/badge/latestdoi/20543/rich-iannone/SplitR)
 <!-- badges: end -->
 
-EXPERIMENTAL - making some changes to this fork of the splitr package, but it is not quite clear if this is how I want to use HYSPLIT (errazesim-splitr). Also, mistakes can be made, as I am new to HYSPLIT, and it is a fairly complex piece of code, even if splitr is just to set it up and run it.
+_EXPERIMENTAL - making some changes to this fork of the splitr package, but it is not quite clear if this is how I want to use HYSPLIT (errazesim-splitr). Also, mistakes can be made, as I am new to HYSPLIT, and it is a fairly complex piece of code, even if splitr is just to set it up and run it._
 
 **splitr** is an **R** package for conducting trajectory and dispersion
 modeling with **HYSPLIT**. We can determine, from one or more receptor
