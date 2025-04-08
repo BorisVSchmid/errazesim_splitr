@@ -55,6 +55,7 @@ run_model <- function(model, config = NULL) {
       lat <- model$sources[i, ][["lat"]]
       lon <- model$sources[i, ][["lon"]]
       height <- model$sources[i, ][["height"]]
+      top_of_single_layer <- model$sources[i, ][["top_of_single_layer"]]
       
       release_start <- model$sources[i, ][["release_start"]]
       release_end <- model$sources[i, ][["release_end"]]
@@ -82,7 +83,7 @@ run_model <- function(model, config = NULL) {
           particle_num = 2500,
           particle_max = 10000,
           species = species_list,
-          top_of_single_layer,
+          top_of_single_layer = top_of_single_layer,
           exec_dir = model$exec_dir,
           met_dir = model$met_dir,
           binary_path = model$binary_path,
