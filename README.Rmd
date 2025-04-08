@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+EXPERIMENTAL - making some changes to this fork of the splitr package, but it is not quite clear if this is how I want to use HYSPLIT (errazesim-splitr). Also, mistakes can be made, as I am new to HYSPLIT, and it is a fairly complex piece of code, even if splitr is just to set it up and run it.
+
 # splitr <img src="man/figures/logo.svg" align="right" height="250px" />
 
 <!-- badges: start -->
