@@ -28,6 +28,8 @@
 #'   hours, with a default of `48`.
 #' @param numpar The number of puffs or particles released per cycle. By default
 #'   this is set to `2500`.
+#' @param nstr Hours between trajectory starts for multiple trajectory-in-time simulations. Default is 0, meaning only a single run.
+#' @param nver The trajectory vertical split number.
 #' @param qcycle An optional cycling of emissions, in units of hours.
 #' @param efile An absolute path to an optional temporal emissions file.
 #' @param tkerd The unstable turbulent kinetic energy ratio. This is set to
@@ -101,6 +103,7 @@ set_config <- function(tratio = 0.75,
                        kblt = 2,
                        conage = 48,
                        numpar = 2500,
+                       nver = 0,
                        qcycle = 0.0,
                        efile = NULL,
                        tkerd = 0.18,

@@ -13,6 +13,7 @@
 #' @param particle_max The maximum number of particles released by a source
 #'   during a model run.
 #' @param species A list of parameters corresponding to an emissions source..
+#' @param top_of_single_layer Below what altitude do we call it deposition (in combination with set_config nver=1 in concentration runs)
 #' @param disp_name An optional, descriptive name for the output file
 #'   collection.
 #'   
@@ -31,6 +32,7 @@ hysplit_dispersion <- function(lat = 49.263,
                                particle_num = 2500,
                                particle_max = 10000,
                                species,
+                               top_of_single_layer = 10,
                                disp_name = NULL,
                                binary_path = NULL, 
                                binary_name = NULL,

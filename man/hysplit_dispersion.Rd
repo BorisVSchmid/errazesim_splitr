@@ -19,6 +19,7 @@ hysplit_dispersion(
   particle_num = 2500,
   particle_max = 10000,
   species,
+  top_of_single_layer = 10,
   disp_name = NULL,
   binary_path = NULL,
   binary_name = NULL,
@@ -71,6 +72,8 @@ release cycle.}
 during a model run.}
 
 \item{species}{A list of parameters corresponding to an emissions source..}
+
+\item{top_of_single_layer}{Below what altitude do we call it deposition (in combination with set_config nver=1 in concentration runs)}
 
 \item{disp_name}{An optional, descriptive name for the output file
 collection.}

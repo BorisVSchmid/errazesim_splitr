@@ -13,6 +13,7 @@ write_disp_control_file <- function(start_day,
                                     model_height,
                                     met_files,
                                     species,
+                                    top_of_single_layer,
                                     output_filename,
                                     system_type,
                                     met_dir,
@@ -51,19 +52,19 @@ write_disp_control_file <- function(start_day,
 
   grid_block <-
     paste0(
-      "1", "\n",
-      "0.0 0.0", "\n",
-      "0.01 0.01", "\n",
-      "180 360", "\n",
-      "./", "\n",
-      "output.bin", "\n",
-      "1", "\n",
-      "0.0", "\n",
+      "1\n",               # number of concentration grids
+      "0.0 0.0\n",         # SW corner lat-lon or offset
+      "0.01 0.01\n",       # lat-lon spacing
+      "180 360\n",         # nx, ny
+      "./\n",              # output folder
+      "output.bin\n",      # output file
+      "1\n",               # number of vertical layers
+      top_of_single_layer,"\n",            # top of that single layer, was 0.0, for deposition, we can also do that higher (10m, 50m?)
       start_year_GMT, " ", start_month_GMT, " ",
-      start_day_GMT, " ", start_hour, " 00", "\n",
+      start_day_GMT, " ", start_hour, " 00\n",
       end_year_GMT, " ", end_month_GMT, " ",
-      end_day_GMT, " ", "23 00", " \n",
-      "00 01 00", "\n"
+      end_day_GMT, " 23 00\n",
+      "00 01 00\n"
     )
 
   species_block <-

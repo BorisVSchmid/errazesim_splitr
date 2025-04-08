@@ -17,6 +17,7 @@ set_config(
   kblt = 2,
   conage = 48,
   numpar = 2500,
+  nver = 0,
   qcycle = 0,
   efile = NULL,
   tkerd = 0.18,
@@ -95,6 +96,8 @@ hours, with a default of \code{48}.}
 
 \item{numpar}{The number of puffs or particles released per cycle. By default
 this is set to \code{2500}.}
+
+\item{nver}{The trajectory vertical split number.}
 
 \item{qcycle}{An optional cycling of emissions, in units of hours.}
 
@@ -179,6 +182,8 @@ pressure variable marker flag (\code{tm_pres}), the potential temperature
 height (\code{tm_terr}). Setting any of these to \code{0} disables output, whereas
 \code{1} will enable output of these data points. By default, all are set to
 \code{0}.}
+
+\item{nstr}{Hours between trajectory starts for multiple trajectory-in-time simulations. Default is 0, meaning only a single run.}
 }
 \description{
 Create a configuration list for a trajectory or dispersion model
