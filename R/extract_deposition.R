@@ -131,8 +131,8 @@ extract_deposition <- function(con2asc_path,
   # Clean the data using dplyr functions (fully qualified)
   # Convert deposition string to numeric, rename, and filter
   deposition_data <- deposition_data %>%
-    dplyr::mutate(Deposition = as.numeric(.data$DepositionStr)) %>%
-    dplyr::filter(!is.na(.data$Deposition) & .data$Deposition > 0) %>%
+    dplyr::mutate(deposition = as.numeric(.data$DepositionStr)) %>%
+    dplyr::filter(!is.na(.data$deposition) & .data$deposition > 0) %>%
     dplyr::select(-.data$DepositionStr) # Remove original string column
 
   # Return the cleaned data frame
