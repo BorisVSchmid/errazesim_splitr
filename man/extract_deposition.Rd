@@ -4,7 +4,12 @@
 \alias{extract_deposition}
 \title{Read HYSPLIT Binary Deposition Output via con2asc Conversion}
 \usage{
-extract_deposition(con2asc_path, input_bin_path, output_ascii_path)
+extract_deposition(
+  con2asc_path,
+  input_bin_path,
+  output_ascii_path,
+  overwrite = FALSE
+)
 }
 \arguments{
 \item{con2asc_path}{Character string. The full path to the 'con2asc.exe'
@@ -14,12 +19,12 @@ executable.}
 binary concentration/deposition file (e.g., "path/to/output.bin").}
 
 \item{output_ascii_path}{Character string. The desired full path for the
-output ASCII file (e.g., "path/to/output.txt"). The function uses the
-'-s' flag of con2asc, so con2asc might ignore this exact name and create
-a file based on the input name (e.g., output.bin.txt), but this path is used
-by the R function to read the expected output. It's recommended to match
+output ASCII file (e.g., "path/to/output.txt"). It's recommended to match
 the name con2asc will create (e.g., use "path/to/output.bin.txt" if
 input is "path/to/output.bin").}
+
+\item{overwrite}{Logical. If TRUE, forces the recreation of the ASCII file
+by running con2asc even if the output file already exists. Defaults to FALSE.}
 }
 \value{
 A data frame (tibble) with columns: YEAR, MO, DA, HR, LAT, LON,
@@ -37,11 +42,19 @@ the 'con2asc.exe' executable. The conversion step can be slow for large files.
 }
 \examples{
 \dontrun{
-# Example usage:
+# Example usage (default - don't overwrite):
 deposition_df <- extract_deposition(
   con2asc_path = "C:/hysplit/exec/con2asc.exe",
   input_bin_path = "C:/hysplit_runs/run1/output.bin",
-  output_ascii_path = "C:/hysplit_runs/run1/output.bin.txt"  # This output is determined by con2asc, and is not an option you control.
+  output_ascii_path = "C:/hysplit_runs/run1/output.bin.txt"
+)
+
+# Example usage (force overwrite):
+deposition_df_overwrite <- extract_deposition(
+  con2asc_path = "C:/hysplit/exec/con2asc.exe",
+  input_bin_path = "C:/hysplit_runs/run1/output.bin",
+  output_ascii_path = "C:/hysplit_runs/run1/output.bin.txt",
+  overwrite = TRUE
 )
 
 # Check the first few rows
@@ -51,9 +64,9 @@ head(deposition_df)
 library(sf)
 library(ggplot2)
 
-deposition_sf <- sf::st_as_sf(deposition_df, 
-                              coords = c("LON", "LAT"), 
-                              crs = 4326)
+deposition_sf <- sf::st_as_sf(deposition_df,
+                             coords = c("LON", "LAT"),
+                             crs = 4326)
 
 ggplot(deposition_sf) +
   geom_sf(aes(color = Deposition)) +
