@@ -19,6 +19,7 @@ set_config(
   numpar = 2500,
   nstr = 0,
   nver = 0,
+  decay = 1,
   qcycle = 0,
   efile = NULL,
   tkerd = 0.18,
@@ -101,6 +102,8 @@ this is set to \code{2500}.}
 \item{nstr}{Hours between trajectory starts for multiple trajectory-in-time simulations. Default is 0, meaning only a single run.}
 
 \item{nver}{The trajectory vertical split number.}
+
+\item{decay}{Whether particles continue their decay after deposition (default = yes, = 1. Else 0) up until the end of the simulation.}
 
 \item{qcycle}{An optional cycling of emissions, in units of hours.}
 

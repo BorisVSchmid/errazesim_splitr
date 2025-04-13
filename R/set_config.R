@@ -30,6 +30,7 @@
 #'   this is set to `2500`.
 #' @param nstr Hours between trajectory starts for multiple trajectory-in-time simulations. Default is 0, meaning only a single run.
 #' @param nver The trajectory vertical split number.
+#' @param decay Whether particles continue their decay after deposition (default = yes, = 1. Else 0) up until the end of the simulation.
 #' @param qcycle An optional cycling of emissions, in units of hours.
 #' @param efile An absolute path to an optional temporal emissions file.
 #' @param tkerd The unstable turbulent kinetic energy ratio. This is set to
@@ -105,6 +106,7 @@ set_config <- function(tratio = 0.75,
                        numpar = 2500,
                        nstr = 0,
                        nver = 0,
+                       decay = 1,
                        qcycle = 0.0,
                        efile = NULL,
                        tkerd = 0.18,
