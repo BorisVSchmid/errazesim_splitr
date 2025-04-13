@@ -22,9 +22,9 @@
 #'   rate = 1.0,
 #'   total_emission_hours = 24
 #' )
-#' write_emittimes_file_multi_cycle(schedule, dir = exec_dir, filename = "emissions_multi_cycle.txt")
+#' write_EMITIMES_file_multi_cycle(schedule, dir = exec_dir, filename = "EMITIMES")
 #' }
-write_emittimes_file_multi_cycle <- function(schedule, dir = ".", filename = "EMITIMES_multicycle.txt") {
+write_EMITIMES_file_multi_cycle <- function(schedule, dir = ".", filename = "EMITIMES") {
   
   if (!dir.exists(dir)) {
     stop("Directory '", dir, "' does not exist.", call. = FALSE)
@@ -89,13 +89,13 @@ write_emittimes_file_multi_cycle <- function(schedule, dir = ".", filename = "EM
 # emission_schedule <- set_emissions_schedule(...)
 
 # Write the multi-cycle file
-# emittimes_multi_filename <- "emissions_multi_cycle.txt"
-# write_emittimes_file_multi_cycle(
+# EMITIMES_multi_filename <- "EMITIMES"
+# write_EMITIMES_file_multi_cycle(
 #   schedule = emission_schedule,
 #   dir = exec_dir,
-#   filename = emittimes_multi_filename
+#   filename = EMITIMES_multi_filename
 # )
 
-# Then use emittimes_multi_filename in set_config:
-# hysplit_config <- set_config(ichem = 5, efile = emittimes_multi_filename)
+# Then use EMITIMES_multi_filename in set_config:
+# hysplit_config <- set_config(ichem = 5, efile = EMITIMES_multi_filename)
 # ... run_model ...
