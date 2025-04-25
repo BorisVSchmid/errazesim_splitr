@@ -58,8 +58,8 @@ write_disp_control_file <- function(start_day,
       "180 360\n",         # nx, ny
       "./\n",              # output folder
       "output.bin\n",      # output file
-      "1\n",               # number of vertical layers
-      top_of_single_layer,"\n",            # top of that single layer, was 0.0, for deposition, we can also do that higher (10m, 50m?)
+      "2\n",               # number of vertical layers
+      "0,",top_of_single_layer,"\n",
       start_year_GMT, " ", start_month_GMT, " ",
       start_day_GMT, " ", start_hour, " 00\n",
       end_year_GMT, " ", end_month_GMT, " ",
