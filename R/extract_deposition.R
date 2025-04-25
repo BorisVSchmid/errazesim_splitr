@@ -108,7 +108,8 @@ extract_deposition <- function(con2asc_path,
 
     # Construct command: Use -s for a single output file.
     # Ensure paths are quoted for safety.
-    command <- paste0('"', con2asc_path, '" -i"', input_bin_path, '" -s')
+    #command <- paste0('"', con2asc_path, '" -i"', input_bin_path, '" -s')
+    command <- sprintf('"%s" -d -r2 -m -i"%s" -o"%s"', con2asc_path, input_bin_path, output_ascii_path)
 
     # Run the command
     status <- system(command)
