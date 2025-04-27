@@ -163,14 +163,14 @@ extract_deposition <- function(con2asc_path,
   # Use rlang's .data pronoun for robustness in packages/functions
    if (!requireNamespace("dplyr", quietly = TRUE)) {
        # Basic R approach if dplyr is not available
-       deposition_data$deposition <- as.numeric(deposition_data$DepositionLayer)
-       deposition_data <- deposition_data[!is.na(deposition_data$deposition) & deposition_data$deposition > 0, ]
+       deposition_data$DepositionLayer <- as.numeric(deposition_data$DepositionLayer)
+       deposition_data <- deposition_data[!is.na(deposition_data$DepositionLayer) & deposition_data$DepositionLayer > 0, ]
        deposition_data$DepositionLayer <- NULL # Remove original string column
    } else {
        # dplyr approach
        deposition_data <- deposition_data %>%
-         dplyr::mutate(deposition = as.numeric(.data$DepositionLayer)) %>%
-         dplyr::filter(!is.na(.data$deposition) & .data$deposition > 0) %>%
+         dplyr::mutate(DepositionLayer = as.numeric(.data$DepositionLayer)) %>%
+         dplyr::filter(!is.na(.data$DepositionLayer) & .data$DepositionLayer > 0) %>%
          dplyr::select(-.data$DepositionLayer) # Remove original string column
    }
 
