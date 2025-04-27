@@ -149,7 +149,7 @@ extract_deposition <- function(con2asc_path,
                       # Inferring column names based on standard con2asc output with -s
                       # Example header might be: # YR MO DY HR LAT LON VAL1 VAL2
                       # Make sure these match your actual con2asc output
-                      col.names = c("YEAR", "MO", "DA", "HR", "LAT", "LON", "ZeroLayer", "DepositionStr"),
+                      col.names = c("YEAR", "MO", "DA", "HR", "LAT", "LON", "ZeroLayer", "DepositionLayer","TopLayer"),
                       stringsAsFactors = FALSE, # Prevent factors
                       encoding = "UTF-8", # Specify encoding if needed
                       blank.lines.skip = TRUE, # Skip blank lines if any
@@ -163,15 +163,15 @@ extract_deposition <- function(con2asc_path,
   # Use rlang's .data pronoun for robustness in packages/functions
    if (!requireNamespace("dplyr", quietly = TRUE)) {
        # Basic R approach if dplyr is not available
-       deposition_data$deposition <- as.numeric(deposition_data$DepositionStr)
+       deposition_data$deposition <- as.numeric(deposition_data$DepositionLayer)
        deposition_data <- deposition_data[!is.na(deposition_data$deposition) & deposition_data$deposition > 0, ]
-       deposition_data$DepositionStr <- NULL # Remove original string column
+       deposition_data$DepositionLayer <- NULL # Remove original string column
    } else {
        # dplyr approach
        deposition_data <- deposition_data %>%
-         dplyr::mutate(deposition = as.numeric(.data$DepositionStr)) %>%
+         dplyr::mutate(deposition = as.numeric(.data$DepositionLayer)) %>%
          dplyr::filter(!is.na(.data$deposition) & .data$deposition > 0) %>%
-         dplyr::select(-.data$DepositionStr) # Remove original string column
+         dplyr::select(-.data$DepositionLayer) # Remove original string column
    }
 
 
