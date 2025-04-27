@@ -22,6 +22,7 @@ set_config(
   decay = 1,
   qcycle = 0,
   efile = NULL,
+  vdist = NULL,
   tkerd = 0.18,
   tkern = 0.18,
   ninit = 1,
@@ -108,6 +109,8 @@ this is set to \code{2500}.}
 \item{qcycle}{An optional cycling of emissions, in units of hours.}
 
 \item{efile}{An absolute path to an optional temporal emissions file.}
+
+\item{vdist}{diagnostic file vertical mass distribution when set to 'VMSDIST'.}
 
 \item{tkerd}{The unstable turbulent kinetic energy ratio. This is set to
 \code{0.18}.}
