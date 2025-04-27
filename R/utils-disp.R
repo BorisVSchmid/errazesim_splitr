@@ -58,8 +58,8 @@ write_disp_control_file <- function(start_day,
       "180 360\n",         # nx, ny
       "./\n",              # output folder
       "output.bin\n",      # output file
-      "2\n",               # number of vertical layers
-      "0,",top_of_single_layer,"\n",
+      "3\n",               # number of vertical layers: 0, 0-top_of_single_layer, and top of simulation
+      "0,",top_of_single_layer,",",model_height,"\n",
       start_year_GMT, " ", start_month_GMT, " ",
       start_day_GMT, " ", start_hour, " 00\n",
       end_year_GMT, " ", end_month_GMT, " ",
