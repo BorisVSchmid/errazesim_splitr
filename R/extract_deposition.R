@@ -164,14 +164,15 @@ extract_deposition <- function(con2asc_path,
    if (!requireNamespace("dplyr", quietly = TRUE)) {
        # Basic R approach if dplyr is not available
        deposition_data$DepositionLayer <- as.numeric(deposition_data$DepositionLayer)
-       deposition_data <- deposition_data[!is.na(deposition_data$DepositionLayer) & deposition_data$DepositionLayer > 0, ]
-       deposition_data$DepositionLayer <- NULL # Remove original string column
+       deposition_data <- deposition_data[!is.na(deposition_data$ZeroLayer) & !is.na(deposition_data$DepositionLayer) &  !is.na(deposition_data$TopLayer) & (deposition_data$ZeroLayer + deposition_data$DepositionLayer + deposition_data$TopLayer) > 0, ]
    } else {
        # dplyr approach
        deposition_data <- deposition_data %>%
-         dplyr::mutate(DepositionLayer = as.numeric(.data$DepositionLayer)) %>%
-         dplyr::filter(!is.na(.data$DepositionLayer) & .data$DepositionLayer > 0) %>%
-         dplyr::select(-.data$DepositionLayer) # Remove original string column
+         dplyr::mutate(ZeroLayer = as.numeric(.data$ZeroLayer),
+                       DepositionLayer = as.numeric(.data$DepositionLayer),
+                       TopLayer = as.numeric(.data$TopLayer)
+                       ) %>%
+         dplyr::filter(!is.na(.data$ZeroLayer) & !is.na(.data$DepositionLayer) & !is.na(.data$TopLayer) & (.data$ZeroLayer + .data$DepositionLayer + .data$TopLayer) > 0)
    }
 
 
