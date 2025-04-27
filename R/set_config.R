@@ -33,6 +33,7 @@
 #' @param decay Whether particles continue their decay after deposition (default = yes, = 1. Else 0) up until the end of the simulation.
 #' @param qcycle An optional cycling of emissions, in units of hours.
 #' @param efile An absolute path to an optional temporal emissions file.
+#' @param vdist diagnostic file vertical mass distribution when set to 'VMSDIST'.
 #' @param tkerd The unstable turbulent kinetic energy ratio. This is set to
 #'   `0.18`.
 #' @param tkern The stable turbulent kinetic energy ratio. This is set to
@@ -109,6 +110,7 @@ set_config <- function(tratio = 0.75,
                        decay = 1,
                        qcycle = 0.0,
                        efile = NULL,
+                       vdist = NULL,
                        tkerd = 0.18,
                        tkern = 0.18,
                        ninit = 1,
