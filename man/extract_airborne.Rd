@@ -2,55 +2,35 @@
 % Please edit documentation in R/extract_airborne.R
 \name{extract_airborne}
 \alias{extract_airborne}
-\title{Read HYSPLIT VMSDIST (vertical mass-distribution) ASCII output}
+\title{Read HYSPLIT VMSDIST (air-borne vertical mass distribution) output}
 \usage{
 extract_airborne(
   vmsread_path,
   input_vms_path,
-  output_ascii_path,
+  output_ascii_path = NULL,
   overwrite = FALSE
 )
 }
 \arguments{
-\item{vmsread_path}{Full path to \strong{vmsread.exe}.}
+\item{vmsread_path}{Full path to \emph{vmsread.exe}.}
 
-\item{input_vms_path}{Full path to the binary \emph{VMSDIST} file.}
+\item{input_vms_path}{Full path to binary \emph{VMSDIST}.}
 
-\item{output_ascii_path}{Desired path for the ASCII file (e.g. “…/vmsdist.txt”).
-Leave it at the default you’d expect \strong{vmsread.exe} to create if you
-prefer.}
+\item{output_ascii_path}{Optional.  Desired ASCII path.  When \code{NULL}
+(default), the function expects \strong{vmsread} to create
+\code{paste0(input_vms_path, ".txt")}.}
 
-\item{overwrite}{Logical.  If \code{TRUE}, re-runs \strong{vmsread} even when the ASCII
-file already exists.  Defaults to \code{FALSE}.}
+\item{overwrite}{Logical. Force re-run of \emph{vmsread} even if the ASCII file
+already exists.  Default \code{FALSE}.}
 }
 \value{
-A tibble with one row per height level, columns
-\itemize{
-\item \verb{YEAR, MO, DA, HR} – timestamp (UTC)
-\item \code{PROFILE} – running counter (1 = first block in file)
-\item \code{HEIGHT_m} – centre height of the layer (m AGL)
-\item \code{Incremental} – incremental \% of the total mass in this layer
-\item \code{Cumulative} – cumulative \% that has settled \emph{above} this level
-}
-All rows with missing or non-positive incremental values are discarded.
+Tibble with columns
+YEAR MO DA HR PROFILE Mass_g HEIGHT_m Incremental Cumulative
+(one row per height layer).
 }
 \description{
-Converts a binary \emph{VMSDIST} file to ASCII using \strong{vmsread.exe} (if needed)
-and parses the resulting \emph{vmsdist.txt} into a tidy data frame.
-}
-\details{
-Each block in \emph{vmsdist.txt} begins with seven numbers
-– \verb{YEAR MO DA HR ID REC TOTAL} – followed by one or more lines that hold the
-vertical profile for that hour (\verb{HEIGHT_m  INCR_\%  CUM_\%}).
-The helper below keeps those pieces together for easy downstream use.
-}
-\examples{
-\dontrun{
-airborne_df <- extract_airborne(
-    vmsread_path      = "C:/hysplit/exec/vmsread.exe",
-    input_vms_path    = "C:/hysplit_runs/run1/VMSDIST",
-    output_ascii_path = "C:/hysplit_runs/run1/vmsdist.txt"
-)
-head(airborne_df)
-}
+Runs \strong{vmsread.exe} as needed and ingests the resulting ASCII file.
+Now robust to the case where \strong{vmsread} writes \verb{<input>.txt} instead of an
+explicitly supplied name, and it keeps \code{Mass_g} (the block-total mass) per
+profile.
 }
